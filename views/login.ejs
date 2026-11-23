@@ -1,30 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Login - Library</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Library Tracker</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    <h1>Library Login</h1>
+<body class="auth-page">
 
-    <% if (error) { %>
-        <p style="color:red"><%= error %></p>
-    <% } %>
+    <div class="auth-card">
+        <div class="brand-icon">📚</div>
 
-    <form method="POST" action="/login">
-        <p>
-            <label>Username<br>
-                <input type="text" name="username" required autofocus>
-            </label>
+        <h1>Welcome Back</h1>
+        <p class="subtitle">Sign in to your library account</p>
+
+        <% if (error) { %>
+            <div class="alert alert-error">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">
+                Login
+            </button>
+        </form>
+
+        <p class="auth-footer">
+            Don't have an account?
+            <a href="/register">Create account</a>
         </p>
-        <p>
-            <label>Password<br>
-                <input type="password" name="password" required>
-            </label>
-        </p>
-        <button type="submit">Login</button>
-    </form>
+    </div>
 
-    <p>No account? <a href="/register">Register here</a></p>
 </body>
 </html>
